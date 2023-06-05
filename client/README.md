@@ -1,0 +1,7 @@
+- install firebase
+- initialize firebase app
+- initialize firebase cloud messaging
+- configure web credentials with VAPID key
+  - then we can receive a registration token
+  - send the registraion token to server for storing
+  - (we can use registration token to test send message from firebase console)
