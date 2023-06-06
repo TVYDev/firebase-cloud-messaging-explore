@@ -34,3 +34,25 @@
 
 - Run `client` project
 - Run `node index.js` on `server` project to send test message
+
+## (2) Send message to devices subscribed to a topic
+
+- On `client` app
+  - Like above steps, we need to get registration token and sent to our server
+- On `server` app
+  - Use the registration token for subscribe to a topic (one-time process)
+    - (NOTE) We can also unsubscribe a registration token from a topic
+  - Then we send the message using the topic
+    - (NOTE) We can send to multiple topics by using `condition`
+
+## (3) Send message to a list of registration token
+
+- On `client` app
+  - Like above steps, we need to get registration token and sent to our server
+- On `server` app
+  - Use the list of registration token, and send message use multicast
+
+### Limitation
+
+- You can subscribe or unsubscribe up to 1,000 devices in a single request. If you provide an array with over 1,000 registration tokens, the request will fail with a messaging/invalid-argument error.
+- Topic messages are optimized for throughput rather than latency. For fast, secure delivery to single devices or small groups of devices, target messages to registration tokens, not topics.

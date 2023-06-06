@@ -26,6 +26,7 @@ getToken(messaging, {
   .then((currentToken) => {
     if (currentToken) {
       console.log("Current Token", currentToken);
+      document.querySelector("#app").textContent = currentToken;
     } else {
       console.log("No registration token available");
     }
@@ -39,4 +40,8 @@ getToken(messaging, {
  */
 onMessage(messaging, (payload) => {
   console.log("Message received", payload);
+  const msgs = document.querySelector("#messages");
+  const msg = document.createElement("li");
+  msg.appendChild(document.createTextNode(JSON.stringify(payload)));
+  msgs.appendChild(msg);
 });
